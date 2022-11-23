@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section>
+        <p class="heading">Add a new Sermon:</p>
+        <form method='post' class="ui form">
+            {% csrf_token %}
+            {{ form.as_p }}
+        <button name="submit" class="btn">Add topic</button>
+        </form>
+    </section>
+{% endblock content %}

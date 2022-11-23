@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <section>
+        <form method="post" action="{% url 'users:register' %}" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit"  class="btn">Register</button>
+            <input type="hidden" name="next" value="{% url 'logs:home' %}"/>
+            <p>Already have an Account? <a href="{% url 'users:login' %}">Login</a></p>
+        </form>
+    </section>
+{% endblock content %}

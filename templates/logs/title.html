@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="faq">
+        <p class="heading">{{ title }}</p>
+        <p>Entries:</p>
+        <p>
+            <a href="{% url 'logs:new_entry' title.id %}">Add new entry</a>
+        </p>
+        <ul>
+            {% for entry in entries %}
+                <li>
+                    <p>{{ entry.text|linebreaks }}</p>
+                    <p>Verse: {{ entry.verse }}</p>
+                    <p>
+                        <a href="{% url 'logs:edit_entry' entry.id %}">Edit entry</a>
+                    </p>
+                </li>
+            {% empty %}
+                <p class="empty">There are no entries for this topic yet.</p>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}
